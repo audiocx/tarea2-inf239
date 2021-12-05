@@ -7,8 +7,8 @@ $conex = $obj->Conectar();
 
 $query = 'INSERT INTO public.test VALUES (?,?)';
 
-$nombre = 'maldita';
-$apellido = 'sea';
+$nombre = 'el';
+$apellido = 'bromas';
 
 $res = $conex->prepare($query);
 
