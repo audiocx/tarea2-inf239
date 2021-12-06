@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <b><a href="index.php">Página principal</a></b>
+    <br>
+    <br>
     <form action="includes/login.inc.php" method="POST">
         <b>Iniciar Sesión</b><br>
         ROL Usuario (sin puntos con guión)<br>

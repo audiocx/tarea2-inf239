@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <b><a href="index.php">Página principal</a></b>
+    <br>
+    <br>
     <form action="includes/signup.inc.php" method="POST">
         <b>Crear cuenta</b><br>
         ROL Usuario (sin puntos con guión)<br>
@@ -26,5 +29,6 @@
 
         <button type="submit" name="submit-signup">Registrarse</button>
     </form>
+    ¿Ya tienes cuenta? <a href="login.php">Inicia sesión</a>
 </body>
 </html>

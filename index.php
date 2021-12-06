@@ -24,7 +24,7 @@
 
 <body>
     <b>BIENVENID@ A SANSAPP</b>
-    <li><a href="home.php">Página principal</a></li>
+    <li><a href="index.php.php">Página principal</a></li>
     <li><a href="login.php">Iniciar Sesion</a></li>
     <li><a href="signup.php">Registrarse</a></li>
     <br>
