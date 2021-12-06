@@ -30,7 +30,7 @@
     <br>
     <br>
     <b>Encuentra los productos</b>
-    <form action="search.php" method="GET">
+    <form action="includes/search.inc.php" method="POST">
         <input type="text" name="busqueda" placeholder="Búsqueda...">
         <button type="submit" name="submit-busqueda">Buscar</button>
     </form>
