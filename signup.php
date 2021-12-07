@@ -21,7 +21,7 @@
         Correo<br>
         <input type="text" name="correoUsuario" placeholder="ej: qwerty@hotmail.com"><br>
         Fecha de Nacimiento<br>
-        <input type="text" name="fechaNacimiento" placeholder="DD/MM/AA"><br>
+        <input type="text" name="fechaNacimiento" placeholder="AA-MM-DD"><br>
         Contraseña<br>
         <input type="password" name="passUsuario" placeholder="**********"><br>
         Repita contraseña<br>

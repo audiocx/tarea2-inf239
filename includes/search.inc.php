@@ -5,5 +5,6 @@ if(!isset($_POST['busqueda'])){
     exit();
 } else{
     $busqueda = $_POST['busqueda'];
-    header("location: ../search.php?busqueda=".$busqueda);
+    $tipo = $_POST['tipo'];
+    header("location: ../search.php?tipo=".$tipo."&busqueda=".$busqueda);
 }
