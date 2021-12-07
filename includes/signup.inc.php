@@ -15,6 +15,17 @@ if(!isset($_POST['submit-signup'])){
 
     $hashedPass = hash("sha256", $passUsuario);
 
+    //$res entrega los rol que sean igual a alguno en la base de datos
+    $query = 'SELECT "Rol" FROM public."Usuario" WHERE "Rol" = ?';
+    $prep = $conn->prepare($query);
+    $prep->execute(array($rolUsuario));
+    $res = $prep->fetchAll();
+
+    if(count($res) == 1){
+        header("location: ../signup.php?error=cuentaExistente");
+        exit();
+    }
+    
     if(!true){
         header("location: ../signup.php?error=errores");
         exit();
@@ -28,4 +39,5 @@ if(!isset($_POST['submit-signup'])){
         
         header("location: ../index.php?login=success");
     }
+    
 }

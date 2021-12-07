@@ -29,6 +29,9 @@
 
         <button type="submit" name="submit-signup">Registrarse</button>
     </form>
-    ¿Ya tienes cuenta? <a href="login.php">Inicia sesión</a>
+    ¿Ya tienes cuenta? <a href="login.php">Inicia sesión</a><br>
+    <?php if(isset($_GET['error']) and $_GET['error'] == 'cuentaExistente'){
+            echo '¡Cuenta con ese ROL ya existe, intenta con otra!';
+    }?>
 </body>
 </html>
