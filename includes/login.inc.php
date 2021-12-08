@@ -11,7 +11,7 @@ if(!isset($_POST['submit-login'])){
     $passUsuario = $_POST['passUsuario'];
     $hashPassUsuario = hash("sha256", $passUsuario);
 
-    $query = 'SELECT "Rol", "Contrasena" 
+    $query = 'SELECT "Rol", "Nombre", "Contrasena" 
             FROM public."Usuario" WHERE "Rol" = ?';
     $buff = $conn->prepare($query);
     $buff->execute(array($rolUsuario));
@@ -22,6 +22,7 @@ if(!isset($_POST['submit-login'])){
         if($hashPassUsuario == $res['Contrasena']){
             session_start();
             $_SESSION['Rol'] = $rolUsuario;
+            $_SESSION['Nombre'] = $res['Nombre'];
             header("location: ../index.php?login=success");
             
         } else{

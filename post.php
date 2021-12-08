@@ -2,7 +2,7 @@
     session_start();
 
     if(!isset($_SESSION['Rol'])){
-        header("location: index.php");
+        header("location: index.php?error=noLoggeado");
         exit();
     }
 
@@ -21,7 +21,7 @@
 <body>
     <li><a href="index.php">Página principal</a></li>
     <li><b><a href="cart.php">Carrito de compras</a></b></li>
-    <li><a href="profile.php">Mi perfil</a></li>
+    <li><a href="profile.php?rol=<?php echo $_SESSION['Rol']?>">Mi perfil: <?php echo $_SESSION['Nombre']?></a></li>
     <li><a href="includes/logout.inc.php">Cerrar Sesión</a></li>
     <br>
     <br>
@@ -36,7 +36,7 @@
         Precio:<br>
         <input type="text" name="precioProducto" placeholder="Precio"><br>
         Cantidad disponible:<br>
-        <input type="text" name="nombreProducto" placeholder="Cantidad"><br>
+        <input type="text" name="cantidadDisponible" placeholder="Cantidad"><br>
         <button type="submit" name="submit-post">Publicar anuncio</button>
     </form>
 </body>

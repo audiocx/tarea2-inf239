@@ -3,13 +3,6 @@
 
     session_start();
 
-    if(isset($_SESSION['Rol'])){
-        $query = 'SELECT "Nombre" FROM public."Usuario" WHERE "Rol" = ?';
-        $buff = $conn->prepare($query);
-        $buff->execute(array($_SESSION['Rol']));
-
-        $nombre = $buff->fetch()['Nombre'];
-    }
 ?>
 
 
@@ -32,7 +25,7 @@
     <?php else:?>
     <li><b><a href="post.php">Publicar Anuncio</a></b></li>
     <li><b><a href="cart.php">Carrito de compras</a></b></li>
-    <li><a href="profile.php">Mi perfil</a></li>
+    <li><a href="profile.php?rol=<?php echo $_SESSION['Rol']?>">Mi perfil: <?php echo $_SESSION['Nombre']?></a></li>
     <li><a href="includes/logout.inc.php">Cerrar Sesión</a></li>
     <?php endif?>
 
@@ -40,7 +33,9 @@
     <?php if(isset($_GET['signup']) and $_GET['signup'] == 'success'){
             echo '<b>¡Cuenta creada, inicia sesión para continuar!</b>';
     } else if(isset($_GET['login']) and $_GET['login'] == 'success'){
-        echo '<b>¡Sesión iniciada!. Bienvenid@ '.$nombre.'.</b>';
+        echo '<b>¡Sesión iniciada!. Bienvenid@ '.$_SESSION['Nombre'].'.</b>';
+    } else if(isset($_GET['error']) and $_GET['error'] == 'noLoggeado'){
+        echo '<b>¡Inicia sesión para continuar!</b>';
     }
     ?>
     <br>
