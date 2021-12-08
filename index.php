@@ -25,7 +25,7 @@
     <?php else:?>
     <li><b><a href="post.php">Publicar Anuncio</a></b></li>
     <li><b><a href="cart.php">Carrito de compras</a></b></li>
-    <li><a href="profile.php?rol=<?php echo $_SESSION['Rol']?>">Mi perfil: <?php echo $_SESSION['Nombre']?></a></li>
+    <li><a href="profile.php?Rol=<?php echo $_SESSION['Rol']?>">Mi perfil: <?php echo $_SESSION['Nombre']?></a></li>
     <li><a href="includes/logout.inc.php">Cerrar Sesión</a></li>
     <?php endif?>
 

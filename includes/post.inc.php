@@ -17,7 +17,7 @@ if(!isset($_POST['submit-post'])){
 
     $queryCat = 'INSERT INTO public."Categoria" ("IDProducto", "Categoria") VALUES (?, ?)';
     $queryAn = 'INSERT INTO public."Anuncio" ("Descripcion", "CantidadDisponible", "FechaPublicacion", "IDVendedor", "IDProducto")
-                VALUES (?, ?, ?, ?, ?)';
+                VALUES (?, ?, ?, ?, ?) RETURNING "IDAnuncio"';
 
     //Script para insertar los detalles del producto, buff devuelve el id autoincremental creado por pg
     $buff = $conn->prepare($queryProd);
@@ -35,4 +35,8 @@ if(!isset($_POST['submit-post'])){
     //Script para insertar los detalles del anuncio
     $buff = $conn->prepare($queryAn);
     $buff->execute(array($descripcionProducto, $cantidadDisponible, date('Y-m-d'), $_SESSION['Rol'], $IDProducto));
+    $IDAnuncio = $buff->fetch()['IDAnuncio'];
+
+    header("location: ../product.php?post=success&IDAnuncio=".$IDAnuncio);
+    exit();
 }
