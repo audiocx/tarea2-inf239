@@ -37,7 +37,7 @@ if(!isset($_POST['submit-signup'])){
         $res = $conn->prepare($query);
         $res->execute(array($rolUsuario, $nombreUsuario, $correoUsuario, $fechaNacimiento, $hashedPass));
         
-        header("location: ../index.php?login=success");
+        header("location: ../index.php?signup=success");
     }
     
 }

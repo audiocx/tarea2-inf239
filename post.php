@@ -1,10 +1,11 @@
 <?php
-    if(!isset($_GET['IDAnuncio'])){
-        header("location: search.php?error=noId");
+    session_start();
+
+    if(!isset($_SESSION['Rol'])){
+        header("location: index.php");
         exit();
-    } else{
-        $IDAnuncio = $_GET['IDAnuncio'];
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -13,10 +14,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Producto</title>
+    <title>Publicar producto</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
-    <?php echo $IDAnuncio?>
+    <li><a href="index.php">Página principal</a></li>
+    <li><b><a href="cart.php">Carrito de compras</a></b></li>
+    <li><a href="profile.php">Mi perfil</a></li>
+    <li><a href="includes/logout.inc.php">Cerrar Sesión</a></li>
+    <br>
+    <br>
+    <b>Formulario de publicación:</b>
+    <form action="includes/post.inc.php" method="POST">
+        Nombre Producto:<br>
+        <input type="text" name="nombreProducto" placeholder="Nombre"><br>
+        Descripción:<br>
+        <input type="text" name="descripcionProducto" placeholder="Descripción"><br>
+        Categorías (separadas por comas):<br>
+        <input type="text" name="categoriasProducto" placeholder="Categorías"><br>
+        Precio:<br>
+        <input type="text" name="precioProducto" placeholder="Precio"><br>
+        Cantidad disponible:<br>
+        <input type="text" name="nombreProducto" placeholder="Cantidad"><br>
+        <button type="submit" name="submit-post">Publicar anuncio</button>
+    </form>
 </body>
 </html>

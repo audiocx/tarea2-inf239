@@ -1,22 +1,15 @@
 <?php
-/*
     include_once 'conexion.php';
-    
-    $query = 'SELECT * FROM public.test';
-    $res = $conn->prepare($query);
 
-    //$nombre = 'asdasdsd';
-    //$apellido = 'como estas';
-    $res->execute();
+    session_start();
 
-    $arrayRes = $res->fetchAll();
+    if(isset($_SESSION['Rol'])){
+        $query = 'SELECT "Nombre" FROM public."Usuario" WHERE "Rol" = ?';
+        $buff = $conn->prepare($query);
+        $buff->execute(array($_SESSION['Rol']));
 
-    foreach($arrayRes as $dato){
-        $nombre = $dato['nombre'];
-        $apellido = $dato['apellido'];
-        echo 'dato: '.$nombre.' - '.$apellido.'<br>';
+        $nombre = $buff->fetch()['Nombre'];
     }
-    */
 ?>
 
 
@@ -33,12 +26,23 @@
 <body>
     <b>BIENVENID@ A SANSAPP</b>
     <li><a href="index.php">Página principal</a></li>
+    <?php if(!isset($_SESSION['Rol'])):?>
     <li><a href="login.php">Iniciar Sesion</a></li>
     <li><a href="signup.php">Registrarse</a></li>
+    <?php else:?>
+    <li><b><a href="post.php">Publicar Anuncio</a></b></li>
+    <li><b><a href="cart.php">Carrito de compras</a></b></li>
+    <li><a href="profile.php">Mi perfil</a></li>
+    <li><a href="includes/logout.inc.php">Cerrar Sesión</a></li>
+    <?php endif?>
+
     <br>
-    <?php if(isset($_GET['login']) and $_GET['login'] == 'success'){
-            echo '¡Cuenta creada, inicia sesión para continuar!';
-    }?>
+    <?php if(isset($_GET['signup']) and $_GET['signup'] == 'success'){
+            echo '<b>¡Cuenta creada, inicia sesión para continuar!</b>';
+    } else if(isset($_GET['login']) and $_GET['login'] == 'success'){
+        echo '<b>¡Sesión iniciada!. Bienvenid@ '.$nombre.'.</b>';
+    }
+    ?>
     <br>
     <b>Encuentra lo que necesitas:</b>
     <form action="includes/search.inc.php" method="POST">

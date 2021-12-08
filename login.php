@@ -20,6 +20,10 @@
         <input type="password" name="passUsuario" placeholder="**********"><br>
         <button type="submit" name="submit-login">Iniciar Sesión</button>
     </form>
-    ¿No tienes cuenta? <a href="signup.php">Regístrate</a>
+    ¿No tienes cuenta? <a href="signup.php">Regístrate</a><br>
+    <?php if(isset($_GET['error'])){
+            if($_GET['error'] == 'cuentaNoExistente') echo '<b>¡Cuenta no existente!</b>';
+            else if($_GET['error'] == 'contrasenaIncorrecta') echo "<b>¡Contraseña incorrecta!</b>";
+    }?>
 </body>
 </html>
