@@ -21,8 +21,10 @@ if(!isset($_POST['submit-login'])){
     if($res){
         if($hashPassUsuario == $res['Contrasena']){
             session_start();
+
             $_SESSION['Rol'] = $rolUsuario;
             $_SESSION['Nombre'] = $res['Nombre'];
+
             header("location: ../index.php?login=success");
             
         } else{

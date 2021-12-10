@@ -92,10 +92,12 @@ if(!isset($_GET['busqueda']) or !isset($_GET['tipo'])){
 
                 $anuncio = $buff->fetch();
 
-                $idAnuncio = $anuncio['IDAnuncio'];
-                $cantidadDisponible = $anuncio['CantidadDisponible'];
+                if($anuncio){
+                    $idAnuncio = $anuncio['IDAnuncio'];
+                    $cantidadDisponible = $anuncio['CantidadDisponible'];
     
-                echo '<li><a href="product.php?IDAnuncio='.$idAnuncio.'">'.$nombreProducto.'</a> | Cantidad disponible: '.$cantidadDisponible.' | Precio: '.$precioProducto.'</li>';
+                    echo '<li><a href="product.php?IDAnuncio='.$idAnuncio.'">'.$nombreProducto.'</a> | Cantidad disponible: '.$cantidadDisponible.' | Precio: '.$precioProducto.'</li>';
+                }
             }
         }
         else echo '<b>¡0 resultados de producto encontrados!</b>';
@@ -125,10 +127,12 @@ if(!isset($_GET['busqueda']) or !isset($_GET['tipo'])){
                 
                 $anuncio = $buff->fetch();
 
-                $idAnuncio = $anuncio['IDAnuncio'];
-                $cantidadDisponible = $anuncio['CantidadDisponible'];
+                if($anuncio){
+                    $idAnuncio = $anuncio['IDAnuncio'];
+                    $cantidadDisponible = $anuncio['CantidadDisponible'];
                 
-                echo '<li><a href="product.php?IDAnuncio='.$idAnuncio.'">'.$nombreProducto.'</a> | Cantidad disponible: '.$cantidadDisponible.' | Precio: '.$precioProducto.'</li>';
+                    echo '<li><a href="product.php?IDAnuncio='.$idAnuncio.'">'.$nombreProducto.'</a> | Cantidad disponible: '.$cantidadDisponible.' | Precio: '.$precioProducto.'</li>';
+                }
             }
         }
         else echo '<b>¡0 resultados de categoria encontrados!</b>';

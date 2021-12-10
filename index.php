@@ -3,6 +3,12 @@
 
     session_start();
 
+    $queryMejorCalificados = 'SELECT * FROM public."ProductosMejorCalificados" WHERE "Promedio" IS NOT NULL';
+    $buff = $conn->prepare($queryMejorCalificados);
+    $buff->execute();
+
+    $mejorCalificados = $buff->fetchAll();
+
 ?>
 
 
@@ -52,5 +58,20 @@
     <?php if(isset($_GET['error']) and $_GET['error'] == 'faltanCamposBusqueda'){
             echo '¡Error en la búsqueda!';
     }?>
+
+    <?php
+        if($mejorCalificados){
+            echo '<b>Productos mejor calificados:</b>';
+            $pos = 0;
+            foreach($mejorCalificados as $prod){
+                if($pos < 5){
+                    $nombreProd = $prod['Nombre'];
+                    $promedioProd = $prod['Promedio'];
+                    echo '<li>'.$nombreProd.' | Calificacion: '.$promedioProd.'</li>';
+                }
+                $pos += 1;
+            }
+        }
+    ?>
 </body>
 </html>
